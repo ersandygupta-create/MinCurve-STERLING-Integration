@@ -239,6 +239,12 @@ permissionset 50000 "E3 HIS Permission"
     table E3SettlementType = X,
     table "E3 Released Indent Details" = X,
     tabledata "E3 Released Indent Details" = RIMD,
-    table "E3 Revenue API Buffer" = X,
-    tabledata "E3 Revenue API Buffer" = RIMD;
+    table "E3 Collection Header" = X,
+    tabledata "E3 Collection Header" = RIMD,
+    table "E3 consumption Header" = X,
+    tabledata "E3 consumption Header" = RIMD,
+    page "E3 HIS Collection Header" = X,
+    page "E3 HIS Collection Header List" = X,
+    page "E3 HIS Consumption Header" = X,
+    page "E3 HIS Consumption Header List" = X;
 }

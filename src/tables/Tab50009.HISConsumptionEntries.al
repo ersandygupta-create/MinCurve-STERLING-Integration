@@ -359,6 +359,11 @@ table 50009 "E3 HIS Consumption Entries"
             Caption = 'Validation HIS Key';
             DataClassification = CustomerContent;
         }
+        field(74; "Batch No."; Code[20])
+        {
+            Caption = 'Batch No.';
+            DataClassification = CustomerContent;
+        }
         field(100; "Issue/Return Flag"; Code[1])
         {
             DataClassification = CustomerContent;

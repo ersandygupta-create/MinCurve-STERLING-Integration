@@ -3,7 +3,7 @@ page 50010 "E3 HIS Revenue Stagging"
 
     ApplicationArea = All;
     Caption = 'HIS Revenue Stagging';
-    PageType = List;
+    PageType = ListPart;
     Editable = true;
 
     SourceTableView = Sorting("Entry No.") where("General Entries Created" = filter(false));

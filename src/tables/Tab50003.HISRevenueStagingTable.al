@@ -66,6 +66,10 @@ table 50003 "E3 HIS Revenue Staging Table"
             IF ("Account Type" = CONST(Employee)) Employee;
             ValidateTableRelation = false;
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                GetHISIntegrationCollectionHeader();
+            end;
         }
         field(10; "External Document No."; Code[30])
         {
@@ -315,14 +319,9 @@ table 50003 "E3 HIS Revenue Staging Table"
             Caption = 'Bank Name';
             DataClassification = CustomerContent;
         }
-        field(114; "Response Status"; Text[100])
+        field(114; "Batch No."; Code[20])
         {
-            Caption = 'Response Status';
-            DataClassification = CustomerContent;
-        }
-        field(115; "Response Message"; Text[100])
-        {
-            Caption = 'Response Message';
+            Caption = 'Batch No.';
             DataClassification = CustomerContent;
         }
     }
@@ -333,8 +332,22 @@ table 50003 "E3 HIS Revenue Staging Table"
             Clustered = true;
         }
     }
-    trigger OnModify()
+    local procedure GetHISIntegrationCollectionHeader()
     begin
-        "Response Message" := '';
+        IF
+            ("Document No." <> CollectionHeader."Document No.") THEN BEGIN
+            CollectionHeader.Reset();
+            CollectionHeader.SetRange("Document No.", "Document No.");
+            CollectionHeader.FindFirst();
+        END;
     end;
+
+    trigger OnInsert()
+    BEGIN
+        GetHISIntegrationCollectionHeader();
+    END;
+
+
+    var
+        CollectionHeader: Record "E3 Collection Header";
 }

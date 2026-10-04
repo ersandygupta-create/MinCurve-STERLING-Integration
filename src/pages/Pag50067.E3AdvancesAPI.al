@@ -27,6 +27,10 @@ page 50067 "E3 Advances API"
                 field(documentNo; Rec."Document No.")
                 {
                     Caption = 'Document No.';
+                    // trigger OnValidate()
+                    // begin
+                    //     DuplicateCheck();
+                    // end;
 
                 }
                 field(documentDate; Rec."Document Date")
@@ -80,10 +84,10 @@ page 50067 "E3 Advances API"
                 field(validationHISKey; Rec."Validation HIS Key")
                 {
                     Caption = 'Validation HIS Key';
-                    // trigger OnValidate()
-                    // begin
-                    //     DuplicateCheck();
-                    // end;
+                    trigger OnValidate()
+                    begin
+                        DuplicateCheck();
+                    end;
                 }
                 field(hisUserID; Rec."HIS User ID")
                 {
@@ -129,54 +133,20 @@ page 50067 "E3 Advances API"
                 {
                     Caption = 'Branch';
                 }
-                field(responseStatus; Rec."Response Status")
+                field(batchNo; Rec."Batch No.")
                 {
-                    Caption = 'Response Status';
-                }
-                field(responseMessage; Rec."Response Message")
-                {
-                    Caption = 'Response Message';
+                    Caption = 'Batch No.';
                 }
             }
         }
     }
-
-    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
-    var
-        ExistingRevenueStaging: Record "E3 HIS Revenue Staging Table";
-    begin
-        if Rec."Validation HIS Key" <> '' then begin
-            ExistingRevenueStaging.Reset();
-            ExistingRevenueStaging.SetRange(
-                "HIS Document Type",
-                Rec."HIS Document Type");
-            ExistingRevenueStaging.SetRange(
-                "Validation HIS Key",
-                Rec."Validation HIS Key");
-
-            if ExistingRevenueStaging.FindFirst() then begin
-                // Duplicate request
-                Rec."Response Status" := 'Duplicate';
-                Rec."Response Message" := 'Duplicate Entry';
-
-                // Insert duplicate record with response
-                exit(true);
-            end;
-        end;
-
-        // New record
-        Rec."Response Status" := 'Success';
-        Rec."Response Message" := 'Data received successfully';
-
-        exit(true);
-    end;
-
     local procedure DuplicateCheck()
     var
         RevenueStaging: Record "E3 HIS Revenue Staging Table";
     begin
         //RevenueStaging.SetFilter("Entry No.", '<>%1', Rec."Entry No.");
-        RevenueStaging.SetRange("HIS Document Type", Rec."HIS Document Type");
+        //RevenueStaging.SetRange("Document No.", Rec."Document No.");
+        //RevenueStaging.SetRange("HIS Document Type", Rec."HIS Document Type");
         RevenueStaging.SetRange("Validation HIS Key", Rec."Validation HIS Key");
         if not RevenueStaging.IsEmpty then
             error('Duplicate Entry');

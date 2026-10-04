@@ -171,6 +171,10 @@ page 50075 "E3 Consumption API"
                 {
                     Caption = 'Issue/Return Flag';
                 }
+                field(batchNo; Rec."Batch No.")
+                {
+                    Caption = 'Batch No.';
+                }
             }
         }
     }
@@ -190,7 +194,7 @@ page 50075 "E3 Consumption API"
         ConsumptionStaging: Record "E3 HIS Consumption Entries";
     begin
         //ConsumptionStaging.SetFilter("Entry No.", '<>%1', Rec."Entry No.");
-        ConsumptionStaging.SetRange("HIS Document Type", Rec."HIS Document Type");
+        //ConsumptionStaging.SetRange("HIS Document Type", Rec."HIS Document Type");
         ConsumptionStaging.SetRange("Validation HIS Key", Rec."Validation HIS Key");
         if not ConsumptionStaging.IsEmpty then
             error('Duplicate Entry');

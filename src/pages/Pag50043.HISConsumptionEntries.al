@@ -3,7 +3,7 @@ page 50043 "E3 HIS Consumption Entries"
 
     ApplicationArea = All;
     Caption = 'HIS Consumption Entries';
-    PageType = List;
+    PageType = ListPart;
     SourceTable = "E3 HIS Consumption Entries";
     SourceTableView = Sorting("Entry No.") where("General Entries Created" = filter(false));
     UsageCategory = Lists;
@@ -151,6 +151,7 @@ page 50043 "E3 HIS Consumption Entries"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                visible = false;
                 ToolTip = 'Executes the Create Consumption Entries action.';
                 Caption = 'Create Consumption Entries';
                 trigger OnAction();
@@ -168,6 +169,7 @@ page 50043 "E3 HIS Consumption Entries"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                visible = false;
                 ToolTip = 'Executes the Post Consumption Entries action.';
                 Caption = 'Post Consumption Entries';
                 trigger OnAction();
