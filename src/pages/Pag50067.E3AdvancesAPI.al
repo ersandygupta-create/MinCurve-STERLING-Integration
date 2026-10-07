@@ -10,7 +10,7 @@ page 50067 "E3 Advances API"
     EntitySetName = 'advances';
     PageType = API;
     SourceTable = "E3 HIS Revenue Staging Table";
-    ODataKeyFields = "Validation HIS Key";
+    ODataKeyFields = SystemId;
     Extensible = false;
 
     layout

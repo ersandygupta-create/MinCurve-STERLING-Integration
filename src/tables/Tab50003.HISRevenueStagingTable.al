@@ -327,7 +327,7 @@ table 50003 "E3 HIS Revenue Staging Table"
     }
     keys
     {
-        key(PK; "Entry No.")
+        key(PK; "Entry No.", "Validation HIS Key")
         {
             Clustered = true;
         }
@@ -335,9 +335,9 @@ table 50003 "E3 HIS Revenue Staging Table"
     local procedure GetHISIntegrationCollectionHeader()
     begin
         IF
-            ("Document No." <> CollectionHeader."Document No.") THEN BEGIN
+            ("Batch No." <> CollectionHeader."Batch No.") THEN BEGIN
             CollectionHeader.Reset();
-            CollectionHeader.SetRange("Document No.", "Document No.");
+            CollectionHeader.SetRange("Batch No.", "Batch No.");
             CollectionHeader.FindFirst();
         END;
     end;
