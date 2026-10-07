@@ -34,10 +34,10 @@ page 50075 "E3 Consumption API"
                 field(validationHISKey; Rec."Validation HIS Key")
                 {
                     Caption = 'Validation HIS Key';
-                    trigger OnValidate()
-                    begin
-                        DuplicateCheck();
-                    end;
+                    // trigger OnValidate()
+                    // begin
+                    //     DuplicateCheck();
+                    // end;
                 }
                 field(postingDate; Rec."Posting Date")
                 {

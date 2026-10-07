@@ -83,11 +83,11 @@ page 50067 "E3 Advances API"
                 }
                 field(validationHISKey; Rec."Validation HIS Key")
                 {
-                    Caption = 'Validation HIS Key';
-                    trigger OnValidate()
-                    begin
-                        DuplicateCheck();
-                    end;
+                    // Caption = 'Validation HIS Key';
+                    // trigger OnValidate()
+                    // begin
+                    //     DuplicateCheck();
+                    // end;
                 }
                 field(hisUserID; Rec."HIS User ID")
                 {

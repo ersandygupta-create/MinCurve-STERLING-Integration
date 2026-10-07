@@ -6,7 +6,8 @@ page 50043 "E3 HIS Consumption Entries"
     PageType = ListPart;
     SourceTable = "E3 HIS Consumption Entries";
     SourceTableView = Sorting("Entry No.") where("General Entries Created" = filter(false));
-    UsageCategory = Lists;
+    editable = true;
+    Usagecategory = Lists;
 
     layout
     {
@@ -14,7 +15,6 @@ page 50043 "E3 HIS Consumption Entries"
         {
             repeater(General)
             {
-                Caption = 'General';
                 field("Entry No."; Rec."Entry No.")
                 {
                     Caption = 'Entry No.';

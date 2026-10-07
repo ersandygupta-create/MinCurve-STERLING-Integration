@@ -382,7 +382,7 @@ pageextension 50003 "E3 HIS Business Manager RC" extends "Business Manager Role 
                         ApplicationArea = Basic, Suite;
                         Caption = 'Create Consumption Entries';
                         Image = Archive;
-                        RunObject = Page "E3 HIS Consumption Entries";
+                        RunObject = Page "E3 HIS Consumption Header List";
                         RunPageMode = Create;
                         ToolTip = 'Create a new Consumption Entries for Companies.';
                     }
