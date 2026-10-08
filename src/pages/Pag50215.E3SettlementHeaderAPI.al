@@ -1,15 +1,15 @@
-page 50212 "E3 Consumption HDR API"
+page 50215 "E3 Settlement HDR API"
 {
     APIGroup = 'apiHIS';
     APIPublisher = 'mindcurve';
     APIVersion = 'v2.0';
     ApplicationArea = All;
-    Caption = 'e3ConsumptionHDRAPI';
+    Caption = 'e3SettlementHDRAPI';
     DelayedInsert = true;
-    EntityName = 'consumptionheader';
-    EntitySetName = 'consumptionheaders';
+    EntityName = 'settlementheader';
+    EntitySetName = 'settlementheaders';
     PageType = API;
-    SourceTable = "E3 Consumption Header";
+    SourceTable = "E3 Settlement Header";
     ODataKeyFields = SystemId;
     Extensible = false;
     layout
@@ -50,23 +50,23 @@ page 50212 "E3 Consumption HDR API"
                 }
 
             }
-            part(ConsumptionLine; "E3 Consumption API")
+            part(SettlementLine; "E3 Settlement API")
             {
                 Caption = 'Lines';
-                EntityName = 'consumption';
-                EntitySetName = 'consumptions';
+                EntityName = 'settlement';
+                EntitySetName = 'settlements';
                 SubPageLink = "Batch No." = field("Batch No.");
             }
         }
     }
     local procedure DuplicateCheck()
     var
-        ConsumptionHeader: Record "E3 Consumption Header";
+        SettlementHeader: Record "E3 Settlement Header";
     begin
-        //ConsumptionHeader.SetRange("Document No.", Rec."Document No.");
-        ConsumptionHeader.SetRange("Validation HIS Key", Rec."Validation HIS Key");
-        //if not ConsumptionHeader.IsEmpty then
-        if ConsumptionHeader.Count >= 1 then
+        //SettlementHeader.SetRange("Document No.", Rec."Document No.");
+        SettlementHeader.SetRange("Validation HIS Key", Rec."Validation HIS Key");
+        //if not SettlementHeader.IsEmpty then
+        if SettlementHeader.Count >= 1 then
             error('Duplicate Entry');
     end;
 }

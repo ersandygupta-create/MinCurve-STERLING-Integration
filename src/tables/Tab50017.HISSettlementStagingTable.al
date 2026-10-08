@@ -311,10 +311,15 @@ table 50017 "E3 HIS Settlement Staging"
             OptionMembers = Settlement;
             DataClassification = CustomerContent;
         }
+        field(112; "Batch No."; Code[20])
+        {
+            Caption = 'Batch No.';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {
-        key(PK; "Entry No.")
+        key(PK; "Entry No.", "Validation HIS Key")
         {
             Clustered = true;
         }

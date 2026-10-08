@@ -125,9 +125,13 @@ page 50085 "E3 Settlement API"
                 {
                     Caption = 'Payor Category';
                 }
-                field(SettlementType; Rec.SettlementType)
+                field(settlementType; Rec.SettlementType)
                 {
                     Caption = 'SettlementType';
+                }
+                field(batchNo; Rec."Batch No.")
+                {
+                    Caption = 'Batch No.';
                 }
             }
         }

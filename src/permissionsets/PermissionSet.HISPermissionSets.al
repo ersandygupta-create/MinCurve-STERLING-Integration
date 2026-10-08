@@ -246,5 +246,8 @@ permissionset 50000 "E3 HIS Permission"
     page "E3 HIS Collection Header" = X,
     page "E3 HIS Collection Header List" = X,
     page "E3 HIS Consumption Header" = X,
-    page "E3 HIS Consumption Header List" = X;
+    page "E3 HIS Consumption Header List" = X,
+    table "E3 Settlement Header" = X,
+    tabledata "E3 Settlement Header" = RIMD;
+
 }

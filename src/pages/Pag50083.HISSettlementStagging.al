@@ -3,7 +3,7 @@ page 50083 "E3 HIS Settlement Stagging"
 
     ApplicationArea = All;
     Caption = 'HIS Settlement Stagging';
-    PageType = List;
+    PageType = ListPart;
     Editable = true;
 
     SourceTableView = Sorting("Entry No.") where("General Entries Created" = filter(false), SettlementType = filter(Settlement));

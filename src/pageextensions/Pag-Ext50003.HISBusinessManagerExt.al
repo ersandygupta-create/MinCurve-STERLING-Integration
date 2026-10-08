@@ -528,7 +528,7 @@ pageextension 50003 "E3 HIS Business Manager RC" extends "Business Manager Role 
                         ApplicationArea = Basic, Suite;
                         Caption = 'Settlement Entries';
                         Image = Archive;
-                        RunObject = Page "E3 HIS Settlement Stagging";
+                        RunObject = Page "E3 HIS Settlement Header List";
                         RunPageMode = Create;
                         ToolTip = 'Create a new Settlement Entries for Companies.';
                     }
