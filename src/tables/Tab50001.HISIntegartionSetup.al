@@ -134,6 +134,16 @@ table 50001 "E3 HIS Integartion Setup"
             Caption = 'Payroll Direct Post';
             DataClassification = CustomerContent;
         }
+        field(25; "Fixed Assets API"; Text[200])
+        {
+            Caption = 'Fixed Assets API';
+            DataClassification = CustomerContent;
+        }
+        field(26; "Fixed Assets API Enabled"; Boolean)
+        {
+            Caption = 'Fixed Assets API Enabled';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {

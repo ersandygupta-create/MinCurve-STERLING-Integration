@@ -1,103 +1,86 @@
-page 50213 "E3 HIS Settlement Header List"
+page 50213 "E3 Settlement List"
 {
-
-    ApplicationArea = All;
-    Caption = 'HIS Settlement Header List';
     PageType = List;
-    UsageCategory = Lists;
-    Editable = false;
-    SourceTableView = Sorting("Entry No.") where("General Entries Created" = filter(false));
     SourceTable = "E3 Settlement Header";
-    CardPageId = "E3 HIS Settlement Header";
+    Caption = 'Settlement List';
+    ApplicationArea = All;
+    UsageCategory = Lists;
+    CardPageId = "E3 Settlement Card";
+    Editable = false;
+    SourceTableView = where(IsCreated = const(false));
 
     layout
     {
-        area(content)
+        area(Content)
         {
             repeater(General)
             {
                 field("Entry No."; Rec."Entry No.")
                 {
-                    ToolTip = 'Specifies the value of the Entry No. field';
                     ApplicationArea = All;
-                    Editable = false;
-                    Style = StrongAccent;
-                    StyleExpr = true;
+                    ToolTip = 'Specifies the entry number.';
                 }
                 field("Document No."; Rec."Document No.")
                 {
-                    ToolTip = 'Specifies the value of the Document No. field';
                     ApplicationArea = All;
-                    visible = false;
+                    ToolTip = 'Specifies the settlement document number.';
                 }
-                field(Amount; Rec.Amount)
+                field("HIS Document Type"; Rec."HIS Document Type")
                 {
-                    ToolTip = 'Specifies the value of the Amount field';
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the HIS document type.';
+                }
+                field("Document Date"; Rec."Document Date")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the document date.';
+                }
+                field("Received Amount"; Rec."Received Amount")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the received amount.';
+                }
+                field("Account Type"; Rec."Account Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the account type.';
+                }
+                field("Account No."; Rec."Account No.")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the account.';
+                }
+                field("Bal. Account Type"; Rec."Bal. Account Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the balance account type.';
+                }
+                field("Bal. Account No"; Rec."Bal. Account No")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the balance account.';
+                }
+                field("Instrument No."; Rec."Instrument No.")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the instrument number.';
+                }
+                field("Instrument Date"; Rec."Instrument Date")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the instrument date.';
+                }
+                field("HIS Validation Key"; Rec."HIS Validation Key")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the HIS validation key.';
                 }
                 field("No. of Lines"; Rec."No. of Lines")
                 {
-                    ToolTip = 'Specifies the value of the No. of Lines field';
                     ApplicationArea = All;
-                    Caption = 'No. of Lines';
-                }
-                field("Validation HIS Key"; Rec."Validation HIS Key")
-                {
-                    ToolTip = 'Specifies the value of the Validation HIS Key field';
-                    ApplicationArea = All;
-                }
-                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
-                {
-                    ToolTip = 'Specifies the value of the Shortcut Dimension 1 Code field';
-                    ApplicationArea = All;
-                }
-                field("Batch No."; Rec."Batch No.")
-                {
-                    ToolTip = 'Specifies the value of the Batch No. field';
-                    ApplicationArea = All;
+                    ToolTip = 'Specifies the number of settlement lines.';
                 }
             }
         }
     }
-    actions
-    {
-        area(Processing)
-        {
-            action("Create Settlement Entries")
-            {
-                ApplicationArea = All;
-                Image = CreateLedgerBudget;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Executes the Create Settlement Entries action.';
-                Caption = 'Create Settlement Entries';
-                trigger OnAction();
-                var
-                    HISIntegration: Codeunit "E3 HIS Integration Mgmt.";
-                begin
-                    HISIntegration.InitGenJnlLineSettlementStaging();
-
-                end;
-            }
-            action("Post Settlement Entries")
-            {
-                ApplicationArea = All;
-                Image = PostBatch;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Executes the Post Collection Entries action.';
-                Caption = 'Post Settlement Entries';
-                trigger OnAction();
-                var
-                    HISIntegration: Codeunit "E3 HIS Integration Mgmt.";
-                begin
-
-                    HISIntegration.PostGenJnlLineEntries();
-                end;
-            }
-        }
-    }
-
 }

@@ -48,6 +48,21 @@ tableextension 50056 "E3 HIS Fixed Asset" extends "Fixed Asset"
             DataClassification = CustomerContent;
             DecimalPlaces = 0 : 2;
         }
+        field(50010; IsSent; Boolean)
+        {
+            Caption = 'IsSent';
+            DataClassification = CustomerContent;
+        }
+        field(50011; Response; Text[100])
+        {
+            Caption = 'Response';
+            DataClassification = CustomerContent;
+        }
+        field(50012; "Manufacturer Code"; Code[20])
+        {
+            Caption = 'Manufacturer Code';
+            DataClassification = CustomerContent;
+        }
     }
     trigger OnBeforeRename()
     begin

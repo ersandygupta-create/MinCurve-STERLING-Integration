@@ -68,6 +68,12 @@ pageextension 50062 "E3 HIS Fixed Assets Card" extends "Fixed Asset Card"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Insurance Value.';
             }
+            field("Manufacturer Code"; Rec."Manufacturer Code")
+            {
+                ApplicationArea = All;
+                Caption = 'Manufacturer Code';
+                ToolTip = 'Specifies the manufacturer code.';
+            }
         }
         addlast(factboxes)
         {

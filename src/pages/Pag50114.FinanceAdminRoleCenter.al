@@ -582,21 +582,21 @@ page 50114 "E3 Finance Admin Role Center"
 
                     action("E3 Create HIS Settlement Entries")
                     {
-                        AccessByPermission = TableData "E3 HIS Settlement Staging" = IMD;
+                        AccessByPermission = TableData "E3 Settlement Header" = IMD;
                         ApplicationArea = Basic, Suite;
                         Caption = 'Settlement Entries';
                         Image = Archive;
-                        RunObject = Page "E3 HIS Settlement Stagging";
+                        RunObject = Page "E3 Settlement List";
                         RunPageMode = Create;
                         ToolTip = 'Create a new Settlement Entries for Companies.';
                     }
                     action("E3 Created HIS Settlement Entries")
                     {
-                        AccessByPermission = TableData "E3 HIS Settlement Staging" = IMD;
+                        AccessByPermission = TableData "E3 Settlement Header" = IMD;
                         ApplicationArea = Basic, Suite;
                         Caption = 'Created Settlement Entries';
                         Image = Archive;
-                        RunObject = Page "E3 Posted HIS Sett. Stagging";
+                        RunObject = Page "E3 Posted Settlement List";
                         RunPageMode = Create;
                         ToolTip = 'Check a new Posted Settlement Entries for Companies.';
                     }

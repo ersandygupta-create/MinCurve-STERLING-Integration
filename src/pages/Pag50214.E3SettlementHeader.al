@@ -1,115 +1,94 @@
-page 50214 "E3 HIS Settlement Header"
+page 50214 "E3 Settlement Card"
 {
-
-    ApplicationArea = All;
-    Caption = 'HIS Settlement Header';
     PageType = Card;
-    Editable = true;
-    UsageCategory = Documents;
-    SourceTableView = Sorting("Entry No.") where("General Entries Created" = filter(false));
     SourceTable = "E3 Settlement Header";
+    Caption = 'Settlement Card';
+    ApplicationArea = All;
+    UsageCategory = None;
 
     layout
     {
-        area(content)
+        area(Content)
         {
             group(General)
             {
+                Caption = 'General';
+
                 field("Entry No."; Rec."Entry No.")
                 {
-                    ToolTip = 'Specifies the value of the Entry No. field';
                     ApplicationArea = All;
                     Editable = false;
-                    Style = StrongAccent;
-                    StyleExpr = true;
+                    ToolTip = 'Specifies the entry number.';
                 }
                 field("Document No."; Rec."Document No.")
                 {
-                    ToolTip = 'Specifies the value of the Document No. field';
                     ApplicationArea = All;
-                    visible = false;
-                    editable = false;
+                    ToolTip = 'Specifies the settlement document number.';
                 }
-                field(Amount; Rec.Amount)
+                field("HIS Document Type"; Rec."HIS Document Type")
                 {
-                    ToolTip = 'Specifies the value of the Amount field';
                     ApplicationArea = All;
-                    editable = false;
+                    ToolTip = 'Specifies the HIS document type.';
+                }
+                field("Document Date"; Rec."Document Date")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the document date.';
+                }
+                field("Received Amount"; Rec."Received Amount")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the received amount.';
+                }
+                field("Account Type"; Rec."Account Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the account type.';
+                }
+                field("Account No."; Rec."Account No.")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the account.';
+                }
+                field("Bal. Account Type"; Rec."Bal. Account Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the balance account type.';
+                }
+                field("Bal. Account No"; Rec."Bal. Account No")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the balance account.';
+                }
+                field("Instrument No."; Rec."Instrument No.")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the instrument number.';
+                }
+                field("Instrument Date"; Rec."Instrument Date")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the instrument date.';
+                }
+                field("HIS Validation Key"; Rec."HIS Validation Key")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the HIS validation key.';
                 }
                 field("No. of Lines"; Rec."No. of Lines")
                 {
-                    ToolTip = 'Specifies the value of the No. of Lines field';
                     ApplicationArea = All;
-                    editable = false;
-                    Caption = 'No. of Lines';
-                }
-                field("Validation HIS Key"; Rec."Validation HIS Key")
-                {
-                    ToolTip = 'Specifies the value of the Validation HIS Key field';
-                    ApplicationArea = All;
-                    editable = false;
-                }
-                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
-                {
-                    ToolTip = 'Specifies the value of the Shortcut Dimension 1 Code field';
-                    ApplicationArea = All;
-                    editable = false;
-                }
-                field("Batch No."; Rec."Batch No.")
-                {
-                    ToolTip = 'Specifies the value of the Batch No. field';
-                    ApplicationArea = All;
-                    editable = false;
+                    Editable = true;
+                    ToolTip = 'Specifies the number of settlement lines.';
                 }
             }
-            part(HISSettlementSubform; "E3 HIS Settlement Stagging")
+
+            part(SettlementLines; "E3 Settlement Subpage")
             {
-                ApplicationArea = Basic, Suite;
-                UpdatePropagation = Both;
-                SubPageLink = "Batch No." = FIELD("Batch No.");
-                Caption = 'Collection Line';
+                ApplicationArea = All;
+                Caption = 'Lines';
+                SubPageLink = "Document No." = field("Document No.");
             }
         }
     }
-    actions
-    {
-        area(Processing)
-        {
-            action("Create Settlement Entries")
-            {
-                ApplicationArea = All;
-                Image = CreateLedgerBudget;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Executes the Create Settlement Entries action.';
-                Caption = 'Create Settlement Entries';
-                trigger OnAction();
-                var
-                    HISPharmacyPost: Codeunit "E3 HIS Integration Mgmt.";
-                begin
-                    HISPharmacyPost.InitGenJnlLineSettlementStaging();
-
-                end;
-            }
-            action("Post Settlement Entries")
-            {
-                ApplicationArea = All;
-                Image = PostBatch;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Executes the Post Settlement Entries action.';
-                Caption = 'Post Settlement Entries';
-                trigger OnAction();
-                var
-                    HISPharmacyPost: Codeunit "E3 HIS Integration Mgmt.";
-                begin
-
-                    HISPharmacyPost.PostGenJnlLineEntries();
-                end;
-            }
-        }
-    }
-
 }

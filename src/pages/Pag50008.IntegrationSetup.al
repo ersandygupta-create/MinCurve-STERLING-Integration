@@ -123,6 +123,23 @@ page 50008 "E3 Integration Setup"
                     ToolTip = 'Specifies the value of the Payroll Direct Post';
                 }
             }
+            group(APISetup)
+            {
+                Caption = 'API Setups';
+                field("Fixed Assets API"; Rec."Fixed Assets API")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Fixed Assets API';
+                    ToolTip = 'Specifies the API URL for Fixed Assets integration.';
+                }
+
+                field("Fixed Assets API Enabled"; Rec."Fixed Assets API Enabled")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Fixed Assets API Enabled';
+                    ToolTip = 'Specifies whether Fixed Assets API integration is enabled.';
+                }
+            }
             group("Log Details")
             {
                 field(SystemCreatedBy; Rec.SystemCreatedBy)
