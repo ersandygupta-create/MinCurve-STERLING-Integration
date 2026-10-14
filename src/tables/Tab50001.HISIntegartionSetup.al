@@ -144,6 +144,22 @@ table 50001 "E3 HIS Integartion Setup"
             Caption = 'Fixed Assets API Enabled';
             DataClassification = CustomerContent;
         }
+        field(27; Username; Text[50])
+        {
+            Caption = 'Username';
+            DataClassification = CustomerContent;
+        }
+        field(28; Password; Text[50])
+        {
+            Caption = 'Password';
+            DataClassification = CustomerContent;
+        }
+        field(29; Host; Text[100])
+        {
+            Caption = 'Host';
+            DataClassification = CustomerContent;
+        }
+
     }
     keys
     {

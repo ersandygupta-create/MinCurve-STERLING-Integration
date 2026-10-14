@@ -126,6 +126,25 @@ page 50008 "E3 Integration Setup"
             group(APISetup)
             {
                 Caption = 'API Setups';
+                field(Username; Rec.Username)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Username';
+                    ToolTip = 'Specifies the API username.';
+                }
+                field(Password; Rec.Password)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Password';
+                    ToolTip = 'Specifies the API password.';
+                    ExtendedDatatype = Masked;
+                }
+                field(Host; Rec.Host)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Host';
+                    ToolTip = 'Specifies the API host address.';
+                }
                 field("Fixed Assets API"; Rec."Fixed Assets API")
                 {
                     ApplicationArea = All;
