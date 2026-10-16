@@ -149,7 +149,7 @@ codeunit 50034 "E3 Fixed Assets Mgmt."
         // =========================
         Clear(ItemObj);
 
-        ItemObj.Add('ItemType', 'Assets');
+        ItemObj.Add('ItemType', 'General items');
         ItemObj.Add('InterfaceId', Format(FixedAssetsUpdateLog."No."));
         ItemObj.Add('ItemName', FixedAssetsUpdateLog.Description);
         ItemObj.Add('ItemCode', Format(FixedAssetsUpdateLog."No."));
@@ -168,7 +168,7 @@ codeunit 50034 "E3 Fixed Assets Mgmt."
         ItemObj.Add('Unit', 'Nos.');
         ItemObj.Add('InterfacingLedgerGroup', 'GENERAL ITEMS');
         ItemObj.Add('TaxSlab', '0');
-        ItemObj.Add('HoldingStore', '1040');
+        ItemObj.Add('HoldingStore', Format(FixedAssetsUpdateLog."FA Location Code"));
         ItemObj.Add(
             'PostingDate',
             Format(
