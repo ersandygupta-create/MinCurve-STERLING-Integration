@@ -57,6 +57,18 @@ page 50058 "E3 Settlement Line API"
                 field(tds; Rec.TDS)
                 {
                 }
+                field(chequeNo; Rec."Cheque No.")
+                {
+                    Caption = 'Cheque No.';
+                }
+                field(chequeDate; Rec."Cheque Date")
+                {
+                    Caption = 'Cheque Date';
+                }
+                field(encounterNo; Rec."Encounter No.")
+                {
+                    Caption = 'Encounter No.';
+                }
             }
         }
     }

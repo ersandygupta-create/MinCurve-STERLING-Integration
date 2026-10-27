@@ -297,6 +297,11 @@ table 50011 "E3 HIS Revenue Header"
             Caption = 'Tax Amount';
             DataClassification = CustomerContent;
         }
+        field(119; "Discount Type"; Text[60])
+        {
+            Caption = 'Discount Type';
+            DataClassification = CustomerContent;
+        }
 
     }
     keys

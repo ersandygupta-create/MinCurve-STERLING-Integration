@@ -87,6 +87,24 @@ page 50215 "E3 Settlement Subpage"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the TDS amount.';
                 }
+                field("Cheque No."; Rec."Cheque No.")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Cheque No.';
+                    ToolTip = 'Specifies the cheque number.';
+                }
+                field("Cheque Date"; Rec."Cheque Date")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Cheque Date';
+                    ToolTip = 'Specifies the cheque date.';
+                }
+                field("Encounter No."; Rec."Encounter No.")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Encounter No.';
+                    ToolTip = 'Specifies the encounter number.';
+                }
             }
         }
     }

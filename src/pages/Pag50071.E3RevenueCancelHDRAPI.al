@@ -124,6 +124,10 @@ page 50071 "E3 Revenue Cancel HDR API"
                 {
                     Caption = 'Discount';
                 }
+                field(discountType; Rec."Discount Type")
+                {
+                    Caption = 'Discount Type';
+                }
                 field(taxAmount; Rec."Tax Amount")
                 {
                     Caption = 'Tax Amount';

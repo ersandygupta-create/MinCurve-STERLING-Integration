@@ -87,6 +87,21 @@ table 50048 "E3 Settlement Line"
             Caption = 'TDS';
             DataClassification = CustomerContent;
         }
+        field(15; "Cheque No."; Code[30])
+        {
+            Caption = 'Cheque No.';
+            DataClassification = CustomerContent;
+        }
+        field(16; "Cheque Date"; Date)
+        {
+            Caption = 'Cheque Date';
+            DataClassification = CustomerContent;
+        }
+        field(17; "Encounter No."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Encounter No.';
+        }
     }
 
     keys

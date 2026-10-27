@@ -81,8 +81,13 @@ page 50054 "E3 HIS Revenue Cancel Header"
                 field(Discount; Rec.Discount)
                 {
                     ApplicationArea = All;
-                    Caption = 'Discount';
+                    Caption = 'Discount Amount';
                     ToolTip = 'Specifies the value of the Discount field.';
+                }
+                field("Discount Type"; Rec."Discount Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Discount Type field.';
                 }
                 field("Create Revenue"; Rec."Create Revenue")
                 {

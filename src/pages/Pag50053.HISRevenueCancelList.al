@@ -46,8 +46,13 @@ page 50053 "E3 HIS Revenue Cancel List"
                 field(Discount; Rec.Discount)
                 {
                     ApplicationArea = All;
-                    Caption = 'Discount';
+                    Caption = 'Discount Amount';
                     ToolTip = 'Specifies the value of the Discount field.';
+                }
+                field("Discount Type"; Rec."Discount Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Discount Type field.';
                 }
                 field("Tax Amount"; Rec."Tax Amount")
                 {

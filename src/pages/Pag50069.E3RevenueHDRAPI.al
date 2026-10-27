@@ -136,6 +136,10 @@ page 50069 "E3 Revenue HDR API"
                 {
                     Caption = 'Discount';
                 }
+                field(discountType; Rec."Discount Type")
+                {
+                    Caption = 'Discount Type';
+                }
                 field(noOfLines; Rec."No. of Lines")
                 {
                     Caption = 'No. of Lines';
