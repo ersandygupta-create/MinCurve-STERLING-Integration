@@ -149,33 +149,21 @@ codeunit 50034 "E3 Fixed Assets Mgmt."
         // =========================
         Clear(ItemObj);
 
-        ItemObj.Add('ItemType', 'General items');
-        ItemObj.Add('InterfaceId', Format(FixedAssetsUpdateLog."No."));
-        ItemObj.Add('ItemName', FixedAssetsUpdateLog.Description);
-        ItemObj.Add('ItemCode', Format(FixedAssetsUpdateLog."No."));
-        ItemObj.Add('Itemcategory', 'General Items');
-        ItemObj.Add('itemsubcategory', 'Capex Items');
-        ItemObj.Add('ItemSubClassification', '');
-        ItemObj.Add('HSNNo', Format(FixedAssetsUpdateLog."HSN/SAC Code"));
-        ItemObj.Add('ManufacturerCode', 'Other');
-        ItemObj.Add('MRPType', '0');
-        ItemObj.Add('IsAssetItem', '1');
-        ItemObj.Add('IsWorkOrderItem', '0');
-        ItemObj.Add('IsExpiryItem', '0');
-        ItemObj.Add('IsBatchItem', '0');
-        ItemObj.Add('BarcodeUnit', 'Nos.');
-        ItemObj.Add('ConversionQty', '1');
-        ItemObj.Add('Unit', 'Nos.');
-        ItemObj.Add('InterfacingLedgerGroup', 'GENERAL ITEMS');
-        ItemObj.Add('TaxSlab', '0');
-        ItemObj.Add('HoldingStore', Format(FixedAssetsUpdateLog."FA Location Code"));
-        ItemObj.Add(
-            'PostingDate',
-            Format(
-                FixedAssetsUpdateLog.SystemCreatedAt,
-                0,
-                '<Year4>-<Month,2>-<Day,2>T<Hours24,2>:<Minutes,2>:<Seconds,2>Z'));
-        // Send the fields directly at the root level.
+        ItemObj.Add('assetTagNo', Format(FixedAssetsUpdateLog."No."));
+        ItemObj.Add('assetName', FixedAssetsUpdateLog.Description);
+        ItemObj.Add('facility', Format(FixedAssetsUpdateLog."Global Dimension 1 Code"));
+        ItemObj.Add('department', Format(FixedAssetsUpdateLog."Global Dimension 2 Code"));
+        ItemObj.Add('category', Format(FixedAssetsUpdateLog."FA Class Code"));
+        ItemObj.Add('subCategoryLevel1', Format(FixedAssetsUpdateLog."FA Subclass Code"));
+        ItemObj.Add('subCategoryLevel2', Format(FixedAssetsUpdateLog."Sub Asset Group Name"));
+        ItemObj.Add('assignedStation', FixedAssetsUpdateLog."FA Location Code");
+        ItemObj.Add('modelNo', FixedAssetsUpdateLog."Model No.");
+        ItemObj.Add('serialNo', FixedAssetsUpdateLog."Serial No.");
+        ItemObj.Add('supplier', FixedAssetsUpdateLog."Vendor No.");
+        ItemObj.Add('cost', '0');
+        ItemObj.Add('manufacturer', FixedAssetsUpdateLog."Manufacturer Code");
+        ItemObj.Add('criticality', 'Critical');
+        ItemObj.Add('usefulLife', '');
         // This addresses the API validation error for required fields.
         Clear(RootObj);
         RootObj := ItemObj;
