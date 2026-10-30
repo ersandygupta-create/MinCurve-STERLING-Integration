@@ -63,6 +63,11 @@ tableextension 50056 "E3 HIS Fixed Asset" extends "Fixed Asset"
             Caption = 'Manufacturer Code';
             DataClassification = CustomerContent;
         }
+        field(50013; "Criticality Type"; Enum "E3 Criticality Type")
+        {
+            Caption = 'Criticality Type';
+            DataClassification = CustomerContent;
+        }
     }
     trigger OnBeforeRename()
     begin

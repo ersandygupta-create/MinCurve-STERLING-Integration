@@ -13,6 +13,7 @@ codeunit 50034 "E3 Fixed Assets Mgmt."
 
     var
         E3APISetup: Record "E3 HIS Integartion Setup";
+        FADeprBook: Record "FA Depreciation Book";
 
     local procedure GetAuthToken(): Text
     var
@@ -155,15 +156,21 @@ codeunit 50034 "E3 Fixed Assets Mgmt."
         ItemObj.Add('department', Format(FixedAssetsUpdateLog."Global Dimension 2 Code"));
         ItemObj.Add('category', Format(FixedAssetsUpdateLog."FA Class Code"));
         ItemObj.Add('subCategoryLevel1', Format(FixedAssetsUpdateLog."FA Subclass Code"));
-        ItemObj.Add('subCategoryLevel2', Format(FixedAssetsUpdateLog."Sub Asset Group Name"));
+        ItemObj.Add('subCategoryLevel2', 'CI');
         ItemObj.Add('assignedStation', FixedAssetsUpdateLog."FA Location Code");
         ItemObj.Add('modelNo', FixedAssetsUpdateLog."Model No.");
         ItemObj.Add('serialNo', FixedAssetsUpdateLog."Serial No.");
         ItemObj.Add('supplier', FixedAssetsUpdateLog."Vendor No.");
         ItemObj.Add('cost', '0');
         ItemObj.Add('manufacturer', FixedAssetsUpdateLog."Manufacturer Code");
-        ItemObj.Add('criticality', 'Critical');
-        ItemObj.Add('usefulLife', '');
+        ItemObj.Add('criticality', Format(FixedAssetsUpdateLog."Criticality Type"));
+        FADeprBook.Reset();
+        FADeprBook.SetRange("FA No.", FixedAssetsUpdateLog."No.");
+
+        if FADeprBook.FindFirst() then
+            ItemObj.Add('usefulLife', Format(FADeprBook."No. of Depreciation Years", 0, '<Integer>'))
+        else
+            ItemObj.Add('usefulLife', '0');
         // This addresses the API validation error for required fields.
         Clear(RootObj);
         RootObj := ItemObj;

@@ -37,6 +37,18 @@ pageextension 50062 "E3 HIS Fixed Assets Card" extends "Fixed Asset Card"
                 ToolTip = 'Nature of Asset';
                 ApplicationArea = All;
             }
+            field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
+            {
+                ApplicationArea = All;
+                Caption = 'Global Dimension 1 Code';
+                ToolTip = 'Specifies the Global Dimension 1 Code.';
+            }
+            field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
+            {
+                ApplicationArea = All;
+                Caption = 'Dept Code';
+                ToolTip = 'Specifies the Global Dimension 2 Code.';
+            }
 
         }
         addlast(General)
@@ -73,6 +85,11 @@ pageextension 50062 "E3 HIS Fixed Assets Card" extends "Fixed Asset Card"
                 ApplicationArea = All;
                 Caption = 'Manufacturer Code';
                 ToolTip = 'Specifies the manufacturer code.';
+            }
+            field("Criticality Type"; Rec."Criticality Type")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the Criticality Type.';
             }
         }
         addlast(factboxes)
