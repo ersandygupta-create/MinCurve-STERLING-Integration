@@ -172,7 +172,7 @@ report 50017 "Account Ledger Report Excel"
         Vendor_lRec: Record Vendor;
         Customer_lRec: Record Customer;
         FixedAsset_lRec: Record "Fixed Asset";
-        Settlement: Record "E3 Settlement Line";
+        Settlement: Record "E3 Settlement Header";
     begin
         ExcelBuffer_gRecTmp.NewRow;
         ExcelBuffer_gRecTmp.AddColumn("G/L Entry"."Posting Date", false, '', false, false, false, '', ExcelBuffer_gRecTmp."Cell Type"::Date);            //Posting Date
@@ -201,7 +201,7 @@ report 50017 "Account Ledger Report Excel"
         Settlement.Reset();
         Settlement.SetRange("Document No.", "G/L Entry"."Document No.");
         if Settlement.FindFirst() then
-            ExcelBuffer_gRecTmp.AddColumn(Settlement."Customer Name", false, '', false, false, false, '', ExcelBuffer_gRecTmp."Cell Type"::Text)
+            ExcelBuffer_gRecTmp.AddColumn('', false, '', false, false, false, '', ExcelBuffer_gRecTmp."Cell Type"::Text)
         else
             ExcelBuffer_gRecTmp.AddColumn('', false, '', false, false, false, '', ExcelBuffer_gRecTmp."Cell Type"::Text);//
         if "G/L Entry"."Debit Amount" <> 0 then

@@ -1,10 +1,10 @@
-report 50022 "Purchase Order Print_New"
+report 50015 "Purchase Order Print"
 {
     ApplicationArea = All;
-    Caption = 'Purchase Order Print V1';
+    Caption = 'Purchase Order Print';
     UsageCategory = ReportsAndAnalysis;
     DefaultLayout = RDLC;
-    RDLCLayout = './src/reports/Rpt50022PurchaseOrder.rdl';
+    RDLCLayout = './src/reports/Rpt50015.PurchaseOrder.rdl';
     PreviewMode = PrintLayout;
 
     dataset

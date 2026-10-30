@@ -54,7 +54,6 @@ permissionset 50000 "E3 HIS Permission"
         report "Posted Voucher - Post Voucher" = X,
         report "Print Bank Reconciliatio Rep." = X,
         report "Purchase Order Print" = X,
-        report "Purchase Order Print_New" = X,
         report "Purchase Order Register" = X,
         report "Purchase Tax Register" = X,
         report "Sales Tax Register" = X,

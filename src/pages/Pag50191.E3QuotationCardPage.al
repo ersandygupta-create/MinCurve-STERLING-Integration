@@ -117,10 +117,10 @@ page 50191 "E3 Quotation Card"
                     IndentLine.Reset();
                     IndentLine.SetRange("Document No.", Rec."Document No.");
 
-                    Clear(CreatePurchaseOrders);
-                    CreatePurchaseOrders.SetNoSeries(Location."E3 Indent PO Series");
-                    CreatePurchaseOrders.SetTableView(IndentLine);
-                    CreatePurchaseOrders.RunModal();
+                    // Clear(CreatePurchaseOrders);
+                    // CreatePurchaseOrders.SetNoSeries(Location."E3 Indent PO Series");
+                    // CreatePurchaseOrders.SetTableView(IndentLine);
+                    // CreatePurchaseOrders.RunModal();
 
                     Message('Purchase Order created successfully.');
                 end;
@@ -135,6 +135,6 @@ page 50191 "E3 Quotation Card"
     var
         IndentLine: Record "E3 Indent Line";
         IndentHeader: Record "E3 Indent Header";
-        CreatePurchaseOrders: Report "E3 Create Purchase Order";
+        //CreatePurchaseOrders: Report "E3 Create Purchase Order";
         HeaderEditable: Boolean;
 }
