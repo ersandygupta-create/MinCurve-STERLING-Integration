@@ -69,6 +69,23 @@ page 50058 "E3 Settlement Line API"
                 {
                     Caption = 'Encounter No.';
                 }
+                field(shortcutDimension1Code; Rec."Shortcut Dimension 1 Code")
+                {
+                    Caption = 'Shortcut Dimension 1 Code';
+                    ApplicationArea = All;
+                }
+                field(discountAmount; Rec."Discount Amount")
+                {
+                    Caption = 'Discount Amount';
+                }
+                field(paymentMode; Rec."Payment Mode")
+                {
+                    Caption = 'Payment Mode';
+                }
+                field(handlingCharges; Rec."Handling Charges")
+                {
+                    Caption = 'Handling Charges';
+                }
             }
         }
     }

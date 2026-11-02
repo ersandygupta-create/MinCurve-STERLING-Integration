@@ -107,6 +107,14 @@ table 50047 "E3 Settlement Header"
             Caption = 'IsCreated';
             DataClassification = CustomerContent;
         }
+        field(15; "Shortcut Dimension 1 Code"; Code[20])
+        {
+            CaptionClass = '1,1,1';
+            Caption = 'Shortcut Dimension 1 Code';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
+            ValidateTableRelation = false;
+            DataClassification = CustomerContent;
+        }
     }
 
     keys

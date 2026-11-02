@@ -31,6 +31,10 @@ page 50057 "E3 Settlement Header API"
                 field(documentDate; Rec."Document Date")
                 {
                 }
+                field(shortcutDimension1Code; Rec."Shortcut Dimension 1 Code")
+                {
+                    Caption = 'Shortcut Dimension 1 Code';
+                }
                 field(receivedAmount; Rec."Received Amount")
                 {
                 }

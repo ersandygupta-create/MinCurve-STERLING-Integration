@@ -73,7 +73,15 @@ page 50214 "E3 Settlement Card"
                 field("HIS Validation Key"; Rec."HIS Validation Key")
                 {
                     ApplicationArea = All;
+                    visible = false;
                     ToolTip = 'Specifies the HIS validation key.';
+                }
+
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Shortcut Dimension 1 Code';
+                    ToolTip = 'Specifies the shortcut dimension 1 code.';
                 }
                 field("No. of Lines"; Rec."No. of Lines")
                 {

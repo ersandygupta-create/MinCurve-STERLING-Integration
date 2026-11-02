@@ -102,6 +102,29 @@ table 50048 "E3 Settlement Line"
             DataClassification = CustomerContent;
             Caption = 'Encounter No.';
         }
+        field(18; "Shortcut Dimension 1 Code"; Code[20])
+        {
+            CaptionClass = '1,1,1';
+            Caption = 'Shortcut Dimension 1 Code';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
+            ValidateTableRelation = false;
+            DataClassification = CustomerContent;
+        }
+        field(19; "Discount Amount"; Decimal)
+        {
+            Caption = 'Discount Amount';
+            DataClassification = CustomerContent;
+        }
+        field(20; "Payment Mode"; Text[30])
+        {
+            Caption = 'Payment Mode';
+            DataClassification = CustomerContent;
+        }
+        field(21; "Handling Charges"; Decimal)
+        {
+            Caption = 'Handling Charges';
+            DataClassification = CustomerContent;
+        }
     }
 
     keys

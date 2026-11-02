@@ -105,6 +105,30 @@ page 50215 "E3 Settlement Subpage"
                     Caption = 'Encounter No.';
                     ToolTip = 'Specifies the encounter number.';
                 }
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Shortcut Dimension 1 Code';
+                    ToolTip = 'Specifies the shortcut dimension 1 code.';
+                }
+                field("Discount Amount"; Rec."Discount Amount")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Discount Amount';
+                    ToolTip = 'Specifies the discount amount.';
+                }
+                field("Payment Mode"; Rec."Payment Mode")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Payment Mode';
+                    ToolTip = 'Specifies the payment mode.';
+                }
+                field("Handling Charges"; Rec."Handling Charges")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Handling Charges';
+                    ToolTip = 'Specifies the handling charges.';
+                }
             }
         }
     }
