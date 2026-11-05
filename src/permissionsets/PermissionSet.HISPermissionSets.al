@@ -245,6 +245,15 @@ permissionset 50000 "E3 HIS Permission"
     tabledata "E3 Settlement Line" = RIMD,
     page "E3 Settlement List" = X,
     page "E3 Settlement Card" = X,
-    page "E3 Settlement Subpage" = X;
+    page "E3 Settlement Subpage" = X,
+    table "E3 Category Type" = X,
+    tabledata "E3 Category Type" = RIMD,
+    table "E3 Subcategory Type L1" = X,
+    tabledata "E3 Subcategory Type L1" = RIMD,
+    table "E3 Manufacturer Type" = X,
+    tabledata "E3 Manufacturer Type" = RIMD,
+    page "E3 Category Type List" = X,
+    page "E3 Subcategory Type L1 List" = X,
+    page "E3 Manufacturer Type List" = X;
 
 }

@@ -80,16 +80,38 @@ pageextension 50062 "E3 HIS Fixed Assets Card" extends "Fixed Asset Card"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Insurance Value.';
             }
-            field("Manufacturer Code"; Rec."Manufacturer Code")
+
+        }
+        addlast(content)
+        {
+            group(Attributes)
             {
-                ApplicationArea = All;
-                Caption = 'Manufacturer Code';
-                ToolTip = 'Specifies the manufacturer code.';
-            }
-            field("Criticality Type"; Rec."Criticality Type")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the Criticality Type.';
+                field("Category Type"; Rec."Category Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the category type of the fixed asset.';
+                }
+                field("Subcategory Type Level1"; Rec."Subcategory Type Level1")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the subcategory type level 1 of the fixed asset.';
+                }
+                field("Subcategory Type Level2"; Rec."Subcategory Type Level2")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the subcategory type level 2 of the fixed asset.';
+                }
+                field("Manufacturer Code"; Rec."Manufacturer Code")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Manufacturer Code';
+                    ToolTip = 'Specifies the manufacturer code.';
+                }
+                field("Criticality Type"; Rec."Criticality Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the Criticality Type.';
+                }
             }
         }
         addlast(factboxes)

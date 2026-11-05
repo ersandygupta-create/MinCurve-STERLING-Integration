@@ -62,10 +62,28 @@ tableextension 50056 "E3 HIS Fixed Asset" extends "Fixed Asset"
         {
             Caption = 'Manufacturer Code';
             DataClassification = CustomerContent;
+            tableRelation = "E3 Manufacturer Type".Code;
         }
         field(50013; "Criticality Type"; Enum "E3 Criticality Type")
         {
             Caption = 'Criticality Type';
+            DataClassification = CustomerContent;
+        }
+        field(50014; "Category Type"; Code[20])
+        {
+            Caption = 'Category Type';
+            DataClassification = CustomerContent;
+            TableRelation = "E3 Category Type".Code;
+        }
+        field(50015; "Subcategory Type Level1"; Code[20])
+        {
+            Caption = 'Subcategory Type Level1';
+            DataClassification = CustomerContent;
+            TableRelation = "E3 Subcategory Type L1".Code;
+        }
+        field(50016; "Subcategory Type Level2"; Code[20])
+        {
+            Caption = 'Subcategory Type Level2';
             DataClassification = CustomerContent;
         }
     }

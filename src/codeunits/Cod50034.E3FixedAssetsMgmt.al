@@ -154,9 +154,9 @@ codeunit 50034 "E3 Fixed Assets Mgmt."
         ItemObj.Add('assetName', FixedAssetsUpdateLog.Description);
         ItemObj.Add('facility', Format(FixedAssetsUpdateLog."Global Dimension 1 Code"));
         ItemObj.Add('department', Format(FixedAssetsUpdateLog."Global Dimension 2 Code"));
-        ItemObj.Add('category', Format(FixedAssetsUpdateLog."FA Class Code"));
-        ItemObj.Add('subCategoryLevel1', Format(FixedAssetsUpdateLog."FA Subclass Code"));
-        ItemObj.Add('subCategoryLevel2', 'CI');
+        ItemObj.Add('category', Format(FixedAssetsUpdateLog."Category Type"));
+        ItemObj.Add('subCategoryLevel1', Format(FixedAssetsUpdateLog."Subcategory Type Level1"));
+        ItemObj.Add('subCategoryLevel2', FixedAssetsUpdateLog."Subcategory Type Level2");
         ItemObj.Add('assignedStation', FixedAssetsUpdateLog."FA Location Code");
         ItemObj.Add('modelNo', FixedAssetsUpdateLog."Model No.");
         ItemObj.Add('serialNo', FixedAssetsUpdateLog."Serial No.");
