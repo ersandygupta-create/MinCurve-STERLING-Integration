@@ -40,6 +40,7 @@ codeunit 50000 "E3 HIS Integration Mgmt."
         Vendor1: Record Vendor;
         VendBankAccount: Record "Vendor Bank Account";
         PANNo: Code[10];
+        IntegrationSetup: Record "E3 HIS Integartion Setup";
     begin
         IntegrationSetup.GET();
         IntegrationSetup.TESTFIELD("Integration Enabled", TRUE);
@@ -101,7 +102,7 @@ codeunit 50000 "E3 HIS Integration Mgmt."
                         VendorRec.INSERT();
                         VendorRec.VALIDATE("Vendor Posting Group", HisMasterStaging."Vendor Posting Group");
                         VendorRec.VALIDATE("Country/Region Code", HisMasterStaging."Country/Region Code");
-                        VendorRec.VALIDATE("Gen. Bus. Posting Group", 'GEN');//HisMasterStaging."Gen. Bus. Posting Group");
+                        VendorRec.VALIDATE("Gen. Bus. Posting Group", IntegrationSetup."Vendor Gen. Bus. Posting Group");//HisMasterStaging."Gen. Bus. Posting Group");
                         VendorRec.VALIDATE("Post Code", HisMasterStaging."Post Code");
                         VendorRec.Validate("Country/Region Code", HisMasterStaging.County);
                         //VendorRec.VALIDATE(County, HisMasterStaging.County);
@@ -295,6 +296,7 @@ codeunit 50000 "E3 HIS Integration Mgmt."
         CustomerPostingGroup: Record "Customer Posting Group";
         Customer: Record "Customer";
         CustBankAccount: Record "Customer Bank Account";
+        IntegrationSetup: Record "E3 HIS Integartion Setup";
     BEGIN
         IntegrationSetup.GET();
         IntegrationSetup.TESTFIELD("Integration Enabled", TRUE);
@@ -343,7 +345,7 @@ codeunit 50000 "E3 HIS Integration Mgmt."
                         Customer.INSERT();
                         Customer.VALIDATE("Customer Posting Group", HisMasterStaging."Customer Posting Group");
                         Customer.VALIDATE("Country/Region Code", HisMasterStaging."Country/Region Code");
-                        Customer.VALIDATE("Gen. Bus. Posting Group", HisMasterStaging."Gen. Bus. Posting Group");
+                        Customer.VALIDATE("Gen. Bus. Posting Group", IntegrationSetup."Custom Gen. Bus. Posting Group");
                         Customer.VALIDATE("Post Code", HisMasterStaging."Post Code");
                         Customer.Validate("Country/Region Code", HisMasterStaging.County);
                         //Customer.VALIDATE(County, HisMasterStaging.County);

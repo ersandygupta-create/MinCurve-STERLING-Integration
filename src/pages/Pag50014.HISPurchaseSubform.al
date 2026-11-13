@@ -231,6 +231,7 @@ page 50014 "E3 HIS Purchase Subform"
     begin
         Rec."Record Type" := Rec."Record Type"::GRN;
         Rec."Document Type" := Rec."Document Type"::Order;
+        Rec."Item Type" := Rec."Item Type"::"G/L Account";
     end;
 
 }

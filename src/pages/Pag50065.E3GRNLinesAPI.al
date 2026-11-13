@@ -193,6 +193,8 @@ page 50065 "E3 GRN Lines API"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
+        Rec.Validate("Item Type", Rec."Item Type"::"G/L Account");
+
         if Rec.HasFilter() then begin
             if Rec.GetFilter("Record Type") = 'GRN' then begin
                 Rec.Validate("Record Type", Rec."Record Type"::GRN);
@@ -207,6 +209,8 @@ page 50065 "E3 GRN Lines API"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
+        Rec.Validate("Item Type", Rec."Item Type"::"G/L Account");
+
         if Rec.HasFilter() then begin
             if Rec.GetFilter("Record Type") = 'GRN' then begin
                 Rec.Validate("Record Type", Rec."Record Type"::GRN);

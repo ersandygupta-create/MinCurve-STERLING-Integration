@@ -158,6 +158,11 @@ page 50061 "E3 Vendor Master API"
     begin
         Rec."Party Type" := Rec."Party Type"::Vendor;
 
+        if Rec."GST Registration No." <> '' then
+            Rec.Validate("GST Vendor Type", Rec."GST Vendor Type"::Registered)
+        else
+            Clear(Rec."GST Vendor Type");
+
         if IsDuplicateVendor() then
             Error(
                 'Duplicate Entry. Vendor HIS Code %1 already exists.',
