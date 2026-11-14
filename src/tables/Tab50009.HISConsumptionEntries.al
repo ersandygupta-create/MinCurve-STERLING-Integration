@@ -199,6 +199,10 @@ table 50009 "E3 HIS Consumption Entries"
             IF ("Account Type" = CONST(Employee)) Employee;
             ValidateTableRelation = false;
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                GetHISIntegrationCogsHdr();
+            end;
         }
         field(37; "External Document No."; Code[30])
         {
@@ -421,10 +425,29 @@ table 50009 "E3 HIS Consumption Entries"
     }
     keys
     {
-        key(PK; "Entry No.")
+        key(PK; "Entry No.", "Validation HIS Key", "Line No.")
         {
             Clustered = true;
         }
     }
+    local procedure GetHISIntegrationCogsHdr()
+    begin
+        TestField("Batch No.");
+        IF
+            ("Batch No." <> COGSHdr."Batch No.") THEN BEGIN
+            COGSHdr.Reset();
+            COGSHdr.SetRange("Batch No.", "Batch No.");
+            COGSHdr.FindFirst();
+        END;
+    end;
+
+    trigger OnInsert()
+    BEGIN
+        GetHISIntegrationCogsHdr();
+    END;
+
+
+    var
+        COGSHdr: Record "E3 Consumption Header";
 
 }

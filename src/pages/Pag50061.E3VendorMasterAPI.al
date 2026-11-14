@@ -177,6 +177,7 @@ page 50061 "E3 Vendor Master API"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Rec."Party Type" := Rec."Party Type"::Vendor;
+        Rec."Gen. Bus. Posting Group" := 'GEN';
         //DuplicateCheck();
     end;
 

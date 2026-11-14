@@ -57,4 +57,11 @@ table 50046 "E3 Consumption Header"
             Clustered = true;
         }
     }
+    trigger OnDelete()
+    var
+        CogsLine: Record "E3 HIS Consumption Entries";
+    begin
+        CogsLine.SetRange("Batch No.", Rec."Batch No.");
+        CogsLine.DeleteAll();
+    end;
 }

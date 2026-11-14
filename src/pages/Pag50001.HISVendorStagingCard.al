@@ -285,7 +285,8 @@ page 50001 "E3 HIS Vendor Staging Card"
     }
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Rec."Party Type" := Rec."Party Type"::Vendor
+        Rec."Party Type" := Rec."Party Type"::Vendor;
+        Rec.Validate("Gen. Bus. Posting Group", 'GEN');
     end;
 
     trigger OnInit()

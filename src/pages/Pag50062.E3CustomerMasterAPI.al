@@ -144,6 +144,7 @@ page 50062 "E3 Customer Master API"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Rec."Party Type" := Rec."Party Type"::Customer;
+        Rec."Gen. Bus. Posting Group" := 'GEN';
         //DuplicateCheck();
     end;
 

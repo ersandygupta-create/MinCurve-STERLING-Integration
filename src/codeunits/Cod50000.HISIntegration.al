@@ -190,7 +190,7 @@ codeunit 50000 "E3 HIS Integration Mgmt."
         HisMasterStaging.SETFILTER("HIS Code", '<>%1', '');
         IF HisMasterStaging.FINDSET() THEN
             REPEAT
-                HisMasterStaging.TestField("Gen. Bus. Posting Group");
+                //HisMasterStaging.TestField("Gen. Bus. Posting Group");
                 HisMasterStaging.TestField("VENDOR Posting Group");
 
                 HisMasterStaging.TestField("HIS Code");
@@ -226,7 +226,7 @@ codeunit 50000 "E3 HIS Integration Mgmt."
                         VendorRec.INSERT();
                         VendorRec.VALIDATE("Vendor Posting Group", HisMasterStaging."Vendor Posting Group");
                         VendorRec.VALIDATE("Country/Region Code", HisMasterStaging."Country/Region Code");
-                        VendorRec.VALIDATE("Gen. Bus. Posting Group", HisMasterStaging."Gen. Bus. Posting Group");
+                        VendorRec.VALIDATE("Gen. Bus. Posting Group", IntegrationSetup."Vendor Gen. Bus. Posting Group");
                         VendorRec.VALIDATE("Post Code", HisMasterStaging."Post Code");
                         VendorRec.Validate("Country/Region Code", HisMasterStaging.County);
                         VendorRec.VALIDATE(County, HisMasterStaging.County);
@@ -313,7 +313,7 @@ codeunit 50000 "E3 HIS Integration Mgmt."
         HisMasterStaging.SETFILTER("Error Description", '%1', '');
         IF HisMasterStaging.FINDSET() THEN
             REPEAT
-                HisMasterStaging.TestField("Gen. Bus. Posting Group");
+                //HisMasterStaging.TestField("Gen. Bus. Posting Group");
                 HisMasterStaging.TestField("Customer Posting Group");
 
                 HisMasterStaging.TestField("HIS Code");
