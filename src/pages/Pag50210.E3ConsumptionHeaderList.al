@@ -63,38 +63,53 @@ page 50210 "E3 HIS Consumption Header List"
     {
         area(Processing)
         {
-            action("Create Revenue Entries")
+            action("Create Consumption Entries")
             {
                 ApplicationArea = All;
                 Image = CreateLedgerBudget;
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                ToolTip = 'Executes the Create Collection Entries action.';
-                Caption = 'Create Collection Entries';
-                trigger OnAction();
-                var
-                    HISIntegration: Codeunit "E3 HIS Integration Mgmt.";
-                begin
-                    HISIntegration.InitGenJnlLineRevenueStaging();
+                ToolTip = 'Executes the Create Consumption Entries action.';
+                Caption = 'Create Consumption Entries';
 
+                trigger OnAction()
+                var
+                    HISPharmacyPost: Codeunit "E3 HIS Integration Mgmt.";
+                    ConsumptionHeader: Record "E3 Consumption Header";
+                begin
+                    // Create General Journal Entries
+                    HISPharmacyPost.InitGenJnlLineConsumptionEntry();
+
+                    // Update Current Consumption Header
+                    ConsumptionHeader.Reset();
+                    ConsumptionHeader.SetRange("Batch No.", Rec."Batch No.");
+
+                    if ConsumptionHeader.FindFirst() then begin
+                        ConsumptionHeader.Validate("General Entries Created", true);
+                        ConsumptionHeader.Modify(true);
+                    end;
+
+                    CurrPage.Update(false);
+
+                    Message('Consumption General Entries created successfully.');
                 end;
             }
-            action("Post Revenue Entries")
+            action("Post Consumption Entries")
             {
                 ApplicationArea = All;
                 Image = PostBatch;
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                ToolTip = 'Executes the Post Collection Entries action.';
-                Caption = 'Post Collection Entries';
+                ToolTip = 'Executes the Post Consumption Entries action.';
+                Caption = 'Post Consumption Entries';
                 trigger OnAction();
                 var
-                    HISIntegration: Codeunit "E3 HIS Integration Mgmt.";
+                    HISPharmacyPost: Codeunit "E3 HIS Integration Mgmt.";
                 begin
 
-                    HISIntegration.PostGenJnlLineEntries();
+                    HISPharmacyPost.PostGenJnlLineConsumptionEntries();
                 end;
             }
         }

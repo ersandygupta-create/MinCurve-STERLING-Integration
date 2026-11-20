@@ -67,7 +67,7 @@ page 50211 "E3 HIS Consumption Header"
                 ApplicationArea = Basic, Suite;
                 UpdatePropagation = Both;
                 SubPageLink = "Batch No." = FIELD("Batch No.");
-                Caption = 'Collection Line';
+                Caption = 'Consumption Line';
             }
         }
     }
@@ -84,12 +84,27 @@ page 50211 "E3 HIS Consumption Header"
                 PromotedIsBig = true;
                 ToolTip = 'Executes the Create Consumption Entries action.';
                 Caption = 'Create Consumption Entries';
-                trigger OnAction();
+
+                trigger OnAction()
                 var
                     HISPharmacyPost: Codeunit "E3 HIS Integration Mgmt.";
+                    ConsumptionHeader: Record "E3 Consumption Header";
                 begin
+                    // Create General Journal Entries
                     HISPharmacyPost.InitGenJnlLineConsumptionEntry();
 
+                    // Update Current Consumption Header
+                    ConsumptionHeader.Reset();
+                    ConsumptionHeader.SetRange("Batch No.", Rec."Batch No.");
+
+                    if ConsumptionHeader.FindFirst() then begin
+                        ConsumptionHeader.Validate("General Entries Created", true);
+                        ConsumptionHeader.Modify(true);
+                    end;
+
+                    CurrPage.Update(false);
+
+                    Message('Consumption General Entries created successfully.');
                 end;
             }
             action("Post Consumption Entries")

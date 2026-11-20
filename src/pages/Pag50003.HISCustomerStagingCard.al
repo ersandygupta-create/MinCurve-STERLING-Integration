@@ -94,6 +94,10 @@ page 50003 "E3 HIS Customer Staging Card"
                 {
                     ApplicationArea = All;
                 }
+                field("E-Mail"; Rec."E-Mail")
+                {
+                    ApplicationArea = All;
+                }
 
             }
             group("Invoicing Information")

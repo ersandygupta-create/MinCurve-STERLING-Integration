@@ -34,7 +34,7 @@ table 50000 "E3 HIS Master Staging"
             Caption = 'Name 2';
             DataClassification = CustomerContent;
         }
-        field(6; Address; Text[50])
+        field(6; Address; Text[100])
         {
             Caption = 'Address';
             DataClassification = CustomerContent;
