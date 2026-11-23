@@ -124,4 +124,12 @@ table 50047 "E3 Settlement Header"
             Clustered = true;
         }
     }
+    trigger OnDelete()
+    var
+        RevLine: Record "E3 Settlement Line";
+    begin
+        RevLine.SetRange("Document No.", Rec."Document No.");
+        RevLine.DeleteAll();
+    end;
+
 }

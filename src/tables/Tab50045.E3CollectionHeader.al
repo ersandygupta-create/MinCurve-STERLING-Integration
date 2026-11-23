@@ -57,4 +57,12 @@ table 50045 "E3 Collection Header"
             Clustered = true;
         }
     }
+    trigger OnDelete()
+    var
+        RevLine: Record "E3 HIS Revenue Staging Table";
+    begin
+        RevLine.SetRange("Batch No.", Rec."Batch No.");
+        RevLine.DeleteAll();
+    end;
+
 }
