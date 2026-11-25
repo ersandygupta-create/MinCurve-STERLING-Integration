@@ -75,8 +75,17 @@ page 50208 "E3 HIS Collection Header List"
                 trigger OnAction();
                 var
                     HISIntegration: Codeunit "E3 HIS Integration Mgmt.";
+                    CollectionHeader: Record "E3 Collection Header";
                 begin
                     HISIntegration.InitGenJnlLineRevenueStaging();
+                    CollectionHeader.Reset();
+                    CollectionHeader.SetRange("Entry No.", Rec."Entry No.");
+                    CollectionHeader.SetRange("Batch No.", Rec."Batch No.");
+
+                    if CollectionHeader.FindFirst() then begin
+                        CollectionHeader."General Entries Created" := true;
+                        CollectionHeader.Modify(true);
+                    end;
 
                 end;
             }
