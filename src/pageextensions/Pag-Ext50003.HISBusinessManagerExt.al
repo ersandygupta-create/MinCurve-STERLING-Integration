@@ -387,13 +387,12 @@ pageextension 50003 "E3 HIS Business Manager RC" extends "Business Manager Role 
                         ToolTip = 'Create a new Consumption Entries for Companies.';
                     }
 
-
                     action("E3 Created HIS Consumption Ent.")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Created Consumption Entries';
                         Image = Archive;
-                        RunObject = Page "E3 Posted HIS Cons. Entries";
+                        RunObject = Page "E3 Posted Cons. Header List";
                         RunPageMode = Create;
                         ToolTip = 'Executes the Created Consumption Entries action.';
                     }

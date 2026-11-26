@@ -69,10 +69,30 @@ codeunit 50010 "E3 Post Consumption Line"
             HISConsumptionEntry."Created By" := USERID;
             HISConsumptionEntry."Created Date Time" := CURRENTDATETIME;
             HISConsumptionEntry."General Entries Created" := TRUE;
+            UpdateConsumptionHeaderCreated(HISConsumptionEntry."Batch No.");
             HISConsumptionEntry.MODIFY();
         end;
         // UNTIL HISConsumptionEntry.NEXT() = 0;
 
+    end;
+
+    local procedure UpdateConsumptionHeaderCreated(ConsumptionBatchNo: Code[20])
+    var
+        ConsumptionEntry: Record "E3 HIS Consumption Entries";
+        ConsumptionHeader: Record "E3 Consumption Header";
+    begin
+        if ConsumptionBatchNo = '' then
+            exit;
+
+        ConsumptionEntry.SetRange("Batch No.", ConsumptionBatchNo);
+        ConsumptionEntry.SetFilter(Amount, '<>%1', 0);
+        ConsumptionEntry.SetRange("General Entries Created", false);
+        if not ConsumptionEntry.IsEmpty() then
+            exit;
+
+        ConsumptionHeader.SetRange("Batch No.", ConsumptionBatchNo);
+        ConsumptionHeader.SetRange("General Entries Created", false);
+        ConsumptionHeader.ModifyAll("General Entries Created", true);
     end;
 
     local procedure GetMappedDimension(HISCCode: Code[20]): Code[20]
