@@ -23,6 +23,14 @@ page 50069 "E3 Revenue HDR API"
                     Caption = 'SystemId';
                     Editable = false;
                 }
+                field(recordType; Rec."Record Type")
+                {
+                    Caption = 'Record Type';
+                }
+                field(documentType; Rec."Document Type")
+                {
+                    Caption = 'Document Type';
+                }
                 field(documentNo; Rec."Document No.")
                 {
                     Caption = 'Document No.';
@@ -170,15 +178,15 @@ page 50069 "E3 Revenue HDR API"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
 
-        Rec.Validate("Record Type", Rec."Record Type"::Revenue);
-        Rec."Document Type" := Rec."Document Type"::Invoice;
+        // Rec.Validate("Record Type", Rec."Record Type"::Revenue);
+        // Rec."Document Type" := Rec."Document Type"::Invoice;
         //DuplicateCheck();
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Rec.Validate("Record Type", Rec."Record Type"::Revenue);
-        Rec."Document Type" := Rec."Document Type"::Invoice;
+        // Rec.Validate("Record Type", Rec."Record Type"::Revenue);
+        // Rec."Document Type" := Rec."Document Type"::Invoice;
         //DuplicateCheck();
     end;
 
@@ -187,8 +195,8 @@ page 50069 "E3 Revenue HDR API"
         RevenueHeader: Record "E3 HIS Revenue Header";
     begin
         //RevenueHeader.SetFilter("Entry No.", '<>%1', Rec."Entry No.");
-        RevenueHeader.Setrange("Record Type", Rec."Record Type"::Revenue);
-        RevenueHeader.Setrange("Document Type", Rec."Document Type"::Invoice);
+        // RevenueHeader.Setrange("Record Type", Rec."Record Type"::Revenue);
+        // RevenueHeader.Setrange("Document Type", Rec."Document Type"::Invoice);
         RevenueHeader.SetRange("Document No.", Rec."Document No.");
         //if not RevenueHeader.IsEmpty then
         if RevenueHeader.Count >= 1 then

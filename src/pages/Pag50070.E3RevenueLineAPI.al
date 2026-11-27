@@ -131,8 +131,8 @@ page 50070 "E3 Revenue Line API"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         if Rec.HasFilter() then begin
-            Rec.Validate("Record Type", Rec."Record Type"::Revenue);
-            Rec."Document Type" := Rec."Document Type"::Invoice;
+            //     Rec.Validate("Record Type", Rec."Record Type"::Revenue);
+            //     Rec."Document Type" := Rec."Document Type"::Invoice;
             Rec."Document No." := Rec.GetFilter("Document No.");
         end;
     end;
@@ -140,8 +140,8 @@ page 50070 "E3 Revenue Line API"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         if Rec.HasFilter() then begin
-            Rec.Validate("Record Type", Rec."Record Type"::Revenue);
-            Rec."Document Type" := Rec."Document Type"::Invoice;
+            // Rec.Validate("Record Type", Rec."Record Type"::Revenue);
+            // Rec."Document Type" := Rec."Document Type"::Invoice;
             Rec."Document No." := Rec.GetFilter("Document No.");
         end;
     end;
