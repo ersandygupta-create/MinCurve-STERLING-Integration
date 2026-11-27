@@ -127,22 +127,45 @@ page 50070 "E3 Revenue Line API"
             }
         }
     }
-
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        if Rec.HasFilter() then begin
-            //     Rec.Validate("Record Type", Rec."Record Type"::Revenue);
-            //     Rec."Document Type" := Rec."Document Type"::Invoice;
-            Rec."Document No." := Rec.GetFilter("Document No.");
-        end;
+        GetRevenueHeader();
+        exit(true);
     end;
 
-    trigger OnNewRecord(BelowxRec: Boolean)
+    local procedure GetRevenueHeader()
+    var
+        RevenueHeader: Record "E3 HIS Revenue Header";
     begin
-        if Rec.HasFilter() then begin
-            // Rec.Validate("Record Type", Rec."Record Type"::Revenue);
-            // Rec."Document Type" := Rec."Document Type"::Invoice;
-            Rec."Document No." := Rec.GetFilter("Document No.");
-        end;
+        if Rec."Document No." = '' then
+            Error('Document No. must not be blank.');
+
+        RevenueHeader.Reset();
+        RevenueHeader.SetRange("Document No.", Rec."Document No.");
+
+        if not RevenueHeader.FindFirst() then
+            Error('Revenue Header not found for Document No. %1.', Rec."Document No.");
+
+        Rec."Record Type" := RevenueHeader."Record Type";
+        Rec."Document Type" := RevenueHeader."Document Type";
+        Rec."Document No." := RevenueHeader."Document No.";
     end;
+
+    // trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    // begin
+    //     if Rec.HasFilter() then begin
+    //         //     Rec.Validate("Record Type", Rec."Record Type"::Revenue);
+    //         //     Rec."Document Type" := Rec."Document Type"::Invoice;
+    //         Rec."Document No." := Rec.GetFilter("Document No.");
+    //     end;
+    // end;
+
+    // trigger OnNewRecord(BelowxRec: Boolean)
+    // begin
+    //     if Rec.HasFilter() then begin
+    //         // Rec.Validate("Record Type", Rec."Record Type"::Revenue);
+    //         // Rec."Document Type" := Rec."Document Type"::Invoice;
+    //         Rec."Document No." := Rec.GetFilter("Document No.");
+    //     end;
+    // end;
 }

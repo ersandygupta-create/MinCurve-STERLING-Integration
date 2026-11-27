@@ -177,18 +177,27 @@ page 50069 "E3 Revenue HDR API"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
+        case Rec."Document Type" of
+            Rec."Document Type"::Invoice:
+                begin
+                    Rec.Validate("Record Type", Rec."Record Type"::Revenue);
+                end;
 
-        // Rec.Validate("Record Type", Rec."Record Type"::Revenue);
-        // Rec."Document Type" := Rec."Document Type"::Invoice;
-        //DuplicateCheck();
+            Rec."Document Type"::"Credit Memo":
+                begin
+                    Rec.Validate("Record Type", Rec."Record Type"::"Revenue Cancel");
+                end;
+        end;
+
+        // DuplicateCheck();
+        exit(true);
     end;
 
-    trigger OnNewRecord(BelowxRec: Boolean)
-    begin
-        // Rec.Validate("Record Type", Rec."Record Type"::Revenue);
-        // Rec."Document Type" := Rec."Document Type"::Invoice;
-        //DuplicateCheck();
-    end;
+    // trigger OnNewRecord(BelowxRec: Boolean)
+    // begin
+    //     // Rec.Validate("Record Type", Rec."Record Type"::Revenue);
+    //     // Rec."Document Type" := Rec."Document Type"::Invoice;
+    // end;
 
     local procedure DuplicateCheck()
     var
