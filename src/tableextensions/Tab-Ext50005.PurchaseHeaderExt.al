@@ -77,10 +77,56 @@ tableextension 50005 "E3 HIS Purchase Header" extends "Purchase Header"
             Caption = 'Integration PO';
             Editable = false;
         }
+        field(50010; "Amount Including GST"; Decimal)
+        {
+            Caption = 'Amount Including GST';
+            DataClassification = CustomerContent;
+        }
     }
     trigger OnInsert()
     begin
         if "Advance PO" = '' then
             "Advance PO" := "No.";
     end;
+
+    procedure CalculateGSTAmount()
+    var
+        PurchLine: Record "Purchase Line";
+        TaxTransactionValue: Record "Tax Transaction Value";
+        GSTSetup: Record "GST Setup";
+        GSTAmount: Decimal;
+        TotalAmt: Decimal;
+        HasGSTSetup: Boolean;
+    begin
+        HasGSTSetup := GSTSetup.Get();
+
+        PurchLine.SetRange("Document Type", Rec."Document Type");
+        PurchLine.SetRange("Document No.", Rec."No.");
+        if PurchLine.FindSet() then
+            repeat
+                // Amount includes both line and invoice discounts.
+                TotalAmt += PurchLine.Amount;
+
+                if HasGSTSetup and (GSTSetup."GST Tax Type" <> '') then begin
+                    TaxTransactionValue.Reset();
+                    TaxTransactionValue.SetRange("Tax Record ID", PurchLine.RecordId);
+                    TaxTransactionValue.SetRange("Tax Type", GSTSetup."GST Tax Type");
+                    TaxTransactionValue.SetRange("Value Type", TaxTransactionValue."Value Type"::COMPONENT);
+                    // Match the GST components used by the purchase order report.
+                    // Other components can contain the taxable base amount.
+                    TaxTransactionValue.SetFilter("Value ID", '%1|%2|%3', 2, 3, 6);
+                    TaxTransactionValue.SetFilter(Percent, '<>%1', 0);
+                    if TaxTransactionValue.FindSet() then
+                        repeat
+                            GSTAmount += TaxTransactionValue.Amount;
+                        until TaxTransactionValue.Next() = 0;
+                end;
+            until PurchLine.Next() = 0;
+
+        if "Amount Including GST" <> TotalAmt + GSTAmount then begin
+            "Amount Including GST" := TotalAmt + GSTAmount;
+            Modify(false);
+        end;
+    end;
+
 }
